@@ -9,7 +9,6 @@ from frappe import _
 from frappe.utils import money_in_words
 from frappe.utils.csvutils import getlink
 from erpnext.controllers.accounts_controller import AccountsController
-from erpnext.accounts.general_ledger import delete_gl_entries
 
 class TravelSalesInvoice(AccountsController):
 	def validate(self):
@@ -140,7 +139,8 @@ class TravelSalesInvoice(AccountsController):
 		make_gl_entries(gl_entries, cancel=(self.docstatus == 2),
 			update_outstanding="Yes", merge_entries=False)		
 	def on_cancel(self):
-		delete_gl_entries(voucher_type=self.doctype, voucher_no=self.name)
+		# In modern ERPNext, GL Entries are cancelled automatically with Journal Entry cancellation
+		pass
 
 
 		

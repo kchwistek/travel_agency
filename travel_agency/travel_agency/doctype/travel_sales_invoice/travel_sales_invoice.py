@@ -9,7 +9,6 @@ from frappe import _
 from frappe.utils import money_in_words
 from frappe.utils.csvutils import getlink
 from erpnext.controllers.accounts_controller import AccountsController
-from erpnext.accounts.general_ledger import delete_gl_entries
 
 class TravelSalesInvoice(AccountsController):
 	def validate(self):
